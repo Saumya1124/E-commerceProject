@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import HeaderCart from "./HeaderCart";
 
-const Header = ()=> {
+const Header = (props)=> {
     return(
 
         <Fragment>
@@ -19,7 +19,7 @@ const Header = ()=> {
                 </Nav>
 
                 <div className="d-flex justify-content-end">
-                    <HeaderCart></HeaderCart>
+                    <HeaderCart showCart={props.onShowCart}></HeaderCart>
                 </div>
                 </Container>
             </Navbar>

@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 
-const HeaderCart = ()=> {
+const HeaderCart = (props)=> {
     return (
         <Fragment>
                 <div>
-                    <button className="d-flex">
+                    <button className="d-flex" onClick={props.showCart} >
                         <p>Cart</p>
                         <p>0</p>
                     </button>
