@@ -1,0 +1,9 @@
+.cartBtn{
+    width: 160px;
+    height: 40px;
+}
+.cartBtn p{
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 20px;
+}

@@ -1,13 +1,22 @@
 import { Fragment } from "react";
+import { useContext } from "react";
+import CartContext from "../../Context/cart-context";
+import { Button } from "react-bootstrap";
+import './HeaderCart.css';
+
 
 const HeaderCart = (props)=> {
+
+    const ctx = useContext(CartContext)
+    const numberOfCartItems = ctx.items.length;
+    
     return (
         <Fragment>
                 <div>
-                    <button className="d-flex" onClick={props.showCart} >
-                        <p>Cart</p>
-                        <p>0</p>
-                    </button>
+                    <Button variant='secondary' className="d-flex cartBtn" onClick={props.showCart} >
+                        <p>CART</p>
+                        <p>{numberOfCartItems}</p>
+                    </Button>
                 </div>
         </Fragment>
     )

@@ -41,7 +41,7 @@ const Cart = (props)=> {
 
                     </div>
                         
-                    {productsArr.map((data)=> (<CartItem title={data.title} price={data.price} quantity={data.quantity} img={data.imageUrl}></CartItem>))}
+                    {productsArr.map((data)=> (<CartItem title={data.title} price={data.price} quantity={data.quantity} img={data.imageUrl} ></CartItem>))}
 
                     <div className="d-flex justify-content-end">
                         <h3>Total : $ 100</h3>
