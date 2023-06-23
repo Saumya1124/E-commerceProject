@@ -4,6 +4,7 @@ import {Navbar} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import HeaderCart from "./HeaderCart";
+import { Link } from "react-router-dom";
 
 const Header = (props)=> {
     return(
@@ -15,7 +16,7 @@ const Header = (props)=> {
                 <Nav className="me-auto d-flex justify-content-center nav">
                     <Nav.Link href="#home">HOME</Nav.Link>
                     <Nav.Link href="#features">STORE</Nav.Link>
-                    <Nav.Link href="#pricing">ABOUT</Nav.Link>
+                    <Nav.Link href="/about">ABOUT</Nav.Link>
                 </Nav>
 
                 <div className="d-flex justify-content-end">
@@ -29,6 +30,7 @@ const Header = (props)=> {
                 <p>The Generics</p>
 
             </div>
+            {/* <Link to='/about'>about</Link> */}
 
             
         </Fragment>
