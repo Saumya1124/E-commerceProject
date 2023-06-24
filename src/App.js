@@ -7,12 +7,23 @@ import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import CartProvider from './Context/CartProvider';
 import About from './Components/About/About';
+import RootLayout from './Components/RootLayout';
+import Home from './Components/Home/Home';
 
 
 const router = createBrowserRouter([
-  { path: '/' , element:<Header/>},
-  { path: '/about' , element:<About/>}
-
+  
+    { path: '/' , 
+    element:<RootLayout />,
+    children:[
+      { path: '/home', element:<Home />},
+      { path: '/about' , element:<About />},
+      { path: '/store', element:<Store />}
+      
+    ]
+  },
+  
+ 
 ])
 
 
@@ -29,13 +40,9 @@ const App = ()=> {
   }
 
   return (
-     <CartProvider>
-            {cartIsShown && <Cart onHideCart={hideCartHandler}></Cart>}
-            <Header onShowCart={showCartHandler}></Header>
-              <Store></Store>
-              <Footer></Footer>    
-            <RouterProvider router={router} />          
-     </CartProvider>
+      <CartProvider>
+        <RouterProvider router={router} />          
+      </CartProvider>
   )
 }
 

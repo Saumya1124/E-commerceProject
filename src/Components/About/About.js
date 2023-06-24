@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import './About.css';
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 
 const About = ()=> {
     return(
         <Fragment>
+           
             <div className="d-flex flex-column justify-content-center">
                 <br />
                 <h2 className="text-center">ABOUT</h2>
@@ -14,6 +17,7 @@ const About = ()=> {
 Lorem ipsum dolor, sit amet consectetur rebates. The distinction, that arise from or to. The greater, therefore, an obstacle to the duties of the debts receives the very great importance to us that these are consequent to that question is answered, which was selected for the fault, it is often one of us, however, have any! Moreover, this is often not at once take the hardships of the life of harsh condemn, we are accusing him? Him whom something large cisterns.</p>
                 </div>
             </div>
+            
         </Fragment>
     )
 }

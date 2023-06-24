@@ -36,6 +36,7 @@ const Store = ()=> {
 
     return(
        <Fragment>
+                
               <div className="music">
                    <br />
                    <h2 className="text-center">MUSIC</h2>

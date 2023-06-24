@@ -14,8 +14,8 @@ const Header = (props)=> {
                 <Container >
                 {/* <Navbar.Brand href="#home"></Navbar.Brand> */}
                 <Nav className="me-auto d-flex justify-content-center nav">
-                    <Nav.Link href="#home">HOME</Nav.Link>
-                    <Nav.Link href="#features">STORE</Nav.Link>
+                    <Nav.Link href="/home">HOME</Nav.Link>
+                    <Nav.Link href="/store">STORE</Nav.Link>
                     <Nav.Link href="/about">ABOUT</Nav.Link>
                 </Nav>
 
@@ -30,7 +30,7 @@ const Header = (props)=> {
                 <p>The Generics</p>
 
             </div>
-            {/* <Link to='/about'>about</Link> */}
+            
 
             
         </Fragment>
