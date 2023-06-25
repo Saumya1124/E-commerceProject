@@ -17,7 +17,7 @@ const Home = () => {
 
     return(
         <Fragment>
-            <div >
+            
             <div className="d-flex flex-column head align-items-center">
 
                 <div className="head1 d-flex flex-column align-items-center"> 
@@ -26,8 +26,7 @@ const Home = () => {
                 </div>
 
                 <br />
-                <br />
-
+                
                 <div>
                     <h1>TOURS</h1>
                 </div>
@@ -42,7 +41,7 @@ const Home = () => {
            
             </div>
 
-            </div>
+            
         </Fragment>
     )
 

@@ -22,7 +22,7 @@ const RootLayout = ()=> {
             {cartIsShown && <Cart onHideCart={hideCartHandler}></Cart>}
             <Header onShowCart={showCartHandler}></Header>
             <Outlet></Outlet>
-            {/* <Footer></Footer>  */}
+            <Footer></Footer> 
             
         </Fragment>
     )
