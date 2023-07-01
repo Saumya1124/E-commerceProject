@@ -17,6 +17,8 @@ const Header = (props)=> {
                     <Nav.Link href="/home">HOME</Nav.Link>
                     <Nav.Link href="/store">STORE</Nav.Link>
                     <Nav.Link href="/about">ABOUT</Nav.Link>
+                    <Nav.Link href="/contact">CONTACT</Nav.Link>
+                    
                 </Nav>
 
                 <div className="d-flex justify-content-end">

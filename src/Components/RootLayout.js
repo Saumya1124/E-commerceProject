@@ -1,5 +1,5 @@
 import { Fragment , useState} from "react";
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 import Header from "./Header/Header";
 import Cart from "./Cart/Cart";
 import Store from "./Store/Store";
@@ -21,7 +21,7 @@ const RootLayout = ()=> {
         <Fragment>
             {cartIsShown && <Cart onHideCart={hideCartHandler}></Cart>}
             <Header onShowCart={showCartHandler}></Header>
-            <Outlet></Outlet>
+            {/* <Outlet></Outlet> */}
             <Footer></Footer> 
             
         </Fragment>
