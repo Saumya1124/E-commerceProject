@@ -31,10 +31,6 @@ function Contact(props) {
 
     })
 
-    const data = response.json()
-    console.log(data)
-
-
     
   }
 

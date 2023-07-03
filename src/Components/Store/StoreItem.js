@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import './StoreItem.css';
 import {Card , Button} from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 
 const StoreItem= (props)=> {
@@ -15,7 +16,9 @@ const StoreItem= (props)=> {
 
     
     return(
-        <Card style={{ width: '18rem' }} className="cards">
+        <Link to={'/store/'+props.id}>
+        
+        <Card style={{ width: '18rem' }} className="cards" >
            
             <Card.Body>
                 <Card.Title className="text-center">{props.title}</Card.Title>
@@ -28,6 +31,7 @@ const StoreItem= (props)=> {
                 <Button variant="primary" onClick={submitHandler}>Add to Cart</Button>
             </Card.Body>
       </Card>
+      </Link>
        
     )
 }

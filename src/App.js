@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import './App.css';
-import { Route} from 'react-router-dom';
+import { Redirect, Route , Switch} from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Store from './Components/Store/Store';
 import Footer from './Components/Footer/Footer';
@@ -10,6 +10,7 @@ import About from './Components/About/About';
 import RootLayout from './Components/RootLayout';
 import Home from './Components/Home/Home';
 import Contact from './Components/Contact/Contact';
+import ProductDetails from './Components/Products/ProductDetails';
 
 
 // const router = createBrowserRouter([
@@ -43,9 +44,17 @@ const App = ()=> {
 
   return (
       <CartProvider>
-        <Header></Header>
+        {cartIsShown && <Cart onHideCart={hideCartHandler}></Cart>}
+        <Header onShowCart={showCartHandler}></Header>
+        
         {/* <RouterProvider router={router} />           */}
-        <Route path='/store'>
+
+        <Switch >
+
+        <Route path='/' exact>
+           <Redirect to='/store'/>
+        </Route>
+        <Route path='/store' exact>
             <Store></Store>
         </Route>
         <Route path='/home'>
@@ -57,6 +66,12 @@ const App = ()=> {
         <Route path='/contact'>
             <Contact></Contact>
         </Route>
+        <Route path='/store/:productID'>
+            <ProductDetails></ProductDetails>
+        </Route>
+
+        </Switch>
+
         <Footer></Footer>
       </CartProvider>
   )

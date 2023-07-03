@@ -5,13 +5,14 @@ import StoreCard from "../../UI/StoreCard";
 import StoreItem from "./StoreItem";
 import {useContext} from 'react';
 import CartContext from '../../Context/cart-context';
+import './Store.css';
 
 
 const productsArr = [
 
-    { id : 1 ,title : 'Colors' , price : 100 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png' , },
+    { id : 1 ,title : 'Colors' , price : 100 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png' , reviews : 'good' },
 
-    { id : 2 ,title : 'Black and white Colors' , price : 50 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png' , },
+    { id : 2 ,title : 'Black and white Colors' , price : 50 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png' , reviews : 'avg.' },
 
     { id : 3, title : 'Yellow and Black Colors' , price : 70 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png' , },
 
@@ -43,7 +44,7 @@ const Store = ()=> {
                    <div className="container">
                         <div className="row">
                             <div className="d-flex justify-content-center flex-wrap">
-                                {productsArr.map( (data)=> (<StoreItem title={data.title} price={data.price} img = {data.imageUrl} onAddToCart={addToCart} id={data.id} />) )}
+                                {productsArr.map( (data)=> (<StoreItem title={data.title} price={data.price} img = {data.imageUrl} onAddToCart={addToCart} id={data.id} reviews = {data.reviews} />) )}
                             </div>
                             
                         </div>
