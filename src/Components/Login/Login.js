@@ -1,76 +1,118 @@
-import React, { useContext, useRef, useState  } from "react";
+import { useState, useRef , useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 
-import { useHistory } from "react-router-dom";
-
-import classes from  './Login.module.css';
-import AuthContext from "../../Context/auth-context";
+import classes from './Login.module.css';
+import AuthContext from '../../Context/auth-context';
 
 const Login = () => {
 
-    const [isLogin , setIsLogin] = useState(true)
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
 
-    const [isLoading , setIsLoading] = useState(false)
+  const history = useHistory()
 
-    const emailInputRef = useRef()
-    const passwordInputRef = useRef()
+  const ctx  = useContext(AuthContext)
 
-    const history = useHistory()
+  const [isLogin, setIsLogin] = useState(true);
 
-    const ctx = useContext(AuthContext)
+  const [isLoading , setIsLoading] = useState(false);
 
-    const submitHandler = (event) => {
+  const switchAuthModeHandler = () => {
+    setIsLogin((prevState) => !prevState);
+  };
 
-        event.preventDefault()
+  const submitHandler = (event) => {
 
-        const enteredEmail = emailInputRef.current.value ;
-        const enteredPassword = passwordInputRef.current.value;
+    event.preventDefault()
 
-        setIsLoading(true)
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
 
-        fetch(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDQrmC1vNM9oGEiMumJCX2hCvhUxLJg9qs',
-            {
-                method : 'POST',
-                body : JSON.stringify({
-                    email : enteredEmail,
-                    password : enteredPassword,
-                    returnSecureToken : true
-                }),
-                headers : {
-                    'Content-Type' : 'application/JSON'
-                }
-            }
-        ).then(res => {
+    setIsLoading(true)
+
+    if(isLogin){
+
+      fetch(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDQrmC1vNM9oGEiMumJCX2hCvhUxLJg9qs',
+        {
+          method : 'POST',
+          body : JSON.stringify({
+            email : enteredEmail,
+            password : enteredPassword,
+            returnSecureToken : true
+          }),
+          headers : {
+            'Content-Type' : 'applicaton/json'
+          }
+        }
+      ).then(res => {
+
+        setIsLoading(false)
+
+        if(res.ok){
+
+          return res.json().then(data => {
+            console.log(data)
+             ctx.logIn(data.idToken)
+             history.replace('/store')
+          })
             
-            setIsLoading(false)
-
-            if(res.ok){
-
-                return  res.json().then( data => {                
-
-                    ctx.logIn(data.idToken)
-
-                    history.replace('/store')
-                })
-            }
-
-            else{
-
-                return res.json().then( data => {
-                    let erroMessage = 'Authentication failed'
-                    alert(erroMessage)
-                })
-            }
-        })
+        } 
+        else{
+          return res.json().then(data => {
+            let errorMessage = 'Authentication failed !';
+            alert(errorMessage)
+          })
+        }
+      })
 
     }
+    else{
+      fetch(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDQrmC1vNM9oGEiMumJCX2hCvhUxLJg9qs',
 
-    const switchAuthModeHandler = () => {
+        {
+          method : 'POST',
+          body : JSON.stringify({
+            email : enteredEmail,
+            password : enteredPassword,
+            returnSecureToken  : true
+          }),
+          headers : {
+            'Content-Type' : 'application/json'
+          }
+        }
+ 
+      ).then(res => {
 
+        setIsLoading(false)
+
+        if(res.ok){
+
+          return res.json().then(data => {
+            ctx.logIn(data.idToken) 
+            history.replace('/')
+          })
+          
+        }
+        else{
+          
+          return res.json().then(data => {
+                  let errorMessage = 'Authentication failed';
+                  if (data && data.error && data.error.message){
+                    errorMessage = data.error.message;
+                  }
+
+                  alert(errorMessage)
+          })
+        }
+      })
     }
 
-    return (
-        <section className={classes.auth}>
+  }
+
+  return (
+    <section className={classes.auth}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
@@ -104,7 +146,7 @@ const Login = () => {
         </div>
       </form>
     </section>
-    )
-}
+  );
+};
 
-export default Login
+export default Login;

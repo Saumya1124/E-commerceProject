@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useContext, useState} from 'react';
 import './App.css';
 import { Redirect, Route , Switch} from 'react-router-dom';
 import Header from './Components/Header/Header';
@@ -12,6 +12,7 @@ import Home from './Components/Home/Home';
 import Contact from './Components/Contact/Contact';
 import ProductDetails from './Components/Products/ProductDetails';
 import Login from './Components/Login/Login';
+import AuthContext from './Context/auth-context';
 
 
 // const router = createBrowserRouter([
@@ -43,8 +44,13 @@ const App = ()=> {
     setCartIsShown(false)
   }
 
+  const ctx = useContext(AuthContext)
+
   return (
       <CartProvider>
+
+  
+
         {cartIsShown && <Cart onHideCart={hideCartHandler}></Cart>}
         <Header onShowCart={showCartHandler}></Header>
         
@@ -53,11 +59,22 @@ const App = ()=> {
         <Switch >
 
         <Route path='/' exact>
-           <Redirect to='/store'/>
+           <Redirect to='/home'/>
         </Route>
+
+        {!ctx.isLoggedIn && <Route path='/login'>
+          <Login />
+        </Route>}
+        
+
         <Route path='/store' exact>
-            <Store></Store>
-        </Route>
+          {ctx.isLoggedIn ? <Store></Store> : <Redirect to='/login' />}
+          
+             
+         </Route>
+        
+
+        
         <Route path='/home'>
             <Home></Home>
         </Route>
