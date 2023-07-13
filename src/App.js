@@ -11,6 +11,7 @@ import RootLayout from './Components/RootLayout';
 import Home from './Components/Home/Home';
 import Contact from './Components/Contact/Contact';
 import ProductDetails from './Components/Products/ProductDetails';
+import Login from './Components/Login/Login';
 
 
 // const router = createBrowserRouter([
@@ -65,6 +66,9 @@ const App = ()=> {
         </Route>
         <Route path='/contact'>
             <Contact></Contact>
+        </Route>
+        <Route path='/login'>
+            <Login></Login>
         </Route>
         <Route path='/store/:productID'>
             <ProductDetails></ProductDetails>
