@@ -6,17 +6,18 @@ import StoreItem from "./StoreItem";
 import {useContext} from 'react';
 import CartContext from '../../Context/cart-context';
 import './Store.css';
+import AuthContext from '../../Context/auth-context';
 
 
 const productsArr = [
 
-    { id : 1 ,title : 'Colors' , price : 100 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png' , reviews : 'good' },
+    { id : 0 ,title : 'Colors' , price : 100 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png' , reviews : 'good' },
 
-    { id : 2 ,title : 'Black and white Colors' , price : 50 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png' , reviews : 'avg.' },
+    { id : 1 ,title : 'Black and white Colors' , price : 50 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png' , reviews : 'avg.' },
 
-    { id : 3, title : 'Yellow and Black Colors' , price : 70 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png' , },
+    { id : 2, title : 'Yellow and Black Colors' , price : 70 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png' , },
 
-    { id : 4 ,title : 'Blue Color' , price : 100 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png' , },
+    { id : 3 ,title : 'Blue Color' , price : 100 , imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png' , },
 
     
     ]
@@ -25,13 +26,20 @@ const Store = ()=> {
 
     const ctx = useContext(CartContext)
 
-    const addToCart = (id , amount)=> {
+    const ctx1 = useContext(AuthContext)
+
+    const addToCart = (id , quantity)=> {
+
+       
         ctx.addItem({
             id : id,
-            title : productsArr.title,
-            price : productsArr.price,
-            amount : amount            
-        })
+            title : productsArr[id].title,
+            price : productsArr[id].price,
+            quantity : quantity
+                  
+        }, ctx1.email)
+
+        
 
     }
 

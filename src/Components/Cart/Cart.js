@@ -1,8 +1,9 @@
-import React, { Fragment , useState} from "react";
+import React, { Fragment , useContext, useState} from "react";
 import './Cart.css';
 import { Modal , Button } from "react-bootstrap";
 import StoreModal from "../../UI/StoreModal";
 import CartItem from "./CartItem";
+import CartContext from "../../Context/cart-context";
 
 
 const productsArr = [
@@ -21,7 +22,11 @@ const productsArr = [
 const Cart = (props)=> {
 
     
+    const ctx = useContext(CartContext)
 
+    const totalPrice = ctx.items.reduce((totalPrice,item) =>{
+        return totalPrice+item.price*item.quantity
+      },0)
 
     return(
         <Fragment>
@@ -40,11 +45,12 @@ const Cart = (props)=> {
                         <p className="col-lg-3">QUANTITY</p>
 
                     </div>
+                    {console.log(ctx.items)}
                         
-                    {productsArr.map((data)=> (<CartItem title={data.title} price={data.price} quantity={data.quantity} img={data.imageUrl} ></CartItem>))}
+                    {ctx.items.map((data)=> (<CartItem id = {data.id} title={data.title} price={data.price} quantity={data.quantity} img={data.imageUrl} onRemove={ctx.removeItem.bind(null,data)}></CartItem>))}
 
                     <div className="d-flex justify-content-end">
-                        <h3>Total : $ 100</h3>
+                        <h3>Total : $ {totalPrice} </h3>
                     </div>
             
                 </div>

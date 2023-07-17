@@ -53,7 +53,7 @@ const Login = () => {
 
           return res.json().then(data => {
             console.log(data)
-             ctx.logIn(data.idToken)
+             ctx.logIn(data.email,data.idToken)
              history.replace('/store')
           })
             
@@ -90,6 +90,8 @@ const Login = () => {
         if(res.ok){
 
           return res.json().then(data => {
+
+            
             ctx.logIn(data.idToken) 
             history.replace('/')
           })

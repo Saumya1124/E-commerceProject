@@ -13,6 +13,7 @@ import Contact from './Components/Contact/Contact';
 import ProductDetails from './Components/Products/ProductDetails';
 import Login from './Components/Login/Login';
 import AuthContext from './Context/auth-context';
+import ItemProvider from './Context/ItemProvider';
 
 
 // const router = createBrowserRouter([
@@ -47,7 +48,10 @@ const App = ()=> {
   const ctx = useContext(AuthContext)
 
   return (
-      <CartProvider>
+
+    <ItemProvider >
+
+      {/* <CartProvider >  */}
 
   
 
@@ -94,7 +98,11 @@ const App = ()=> {
         </Switch>
 
         <Footer></Footer>
-      </CartProvider>
+      
+
+      {/* </CartProvider> */}
+
+      </ItemProvider>
   )
 }
 
