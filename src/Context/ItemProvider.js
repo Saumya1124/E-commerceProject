@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import CartContext from "./cart-context";
+import AuthContext from "./auth-context";
 
 const ItemProvider = (props) => {
+
+
   const [cartItems, setcartItems] = useState([]);
 
   const email = localStorage.getItem("email");
   const loggedInEmail = email && email.replace("@gmail.com", "");
   console.log(loggedInEmail, "loggedInEmail");
 
-  const url = `https://crudcrud.com/api/b4b9a34ce0d0413ea3168b659918186a/new${loggedInEmail}`;
+  const url = `https://crudcrud.com/api/85ec33ca6f1c495b84f65a098c685c4a/${loggedInEmail}`;
 
   useEffect(() => {
     const getDetails = async () => {
@@ -70,8 +73,8 @@ const ItemProvider = (props) => {
       setcartItems(updatedCart);
     }
 
-     const res = (await fetch(`${url}`)).json()
-     const data = res.then(data => console.log(data))
+    //  const res = (await fetch(`${url}`)).json()
+    //  const data = res.then(data => console.log(data))
      
        
      
@@ -123,6 +126,7 @@ const ItemProvider = (props) => {
     items: cartItems,
     addItem: addItemFromCartHandler,
     removeItem: removeItemFromCartHandler,
+    email : email
   };
 
   return (

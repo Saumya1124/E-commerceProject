@@ -9,8 +9,12 @@ const productDetails = [
         { description :'worth for money' , userName : 'Raj' ,  date : '20/06/2023', rating: 4},
         { description :'love it' , userName : 'Punam' ,  date : '05/06/2023', rating: 4},
         { description :'must buy' , userName : 'Saumya' ,  date : '16/06/2023', rating: 4},
+    ],
+    images : [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG-zR2Pxd4gjS2mgXPcJV1R_HdxhzlmJbOKA&usqp=CAU',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOhHKvbXYzYlPurkhbaHlwfzEKd7GI2UVnQ&usqp=CAU'
     ]},
-    
+
     {id : 1 , reviews : [
         { description :'good one' , userName : 'Rahul' ,  date : '22/06/2023', rating: 4},
         { description :'worth for money' , userName : 'Raj' ,  date : '20/06/2023' , rating: 5},
@@ -53,7 +57,7 @@ const ProductDetails = ()=> {
 
     const params = useParams()
 
-    
+    console.log(productDetails[0].id)
     console.log(productDetails[0].reviews[0])
     return (
         <Fragment>

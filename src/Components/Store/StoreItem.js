@@ -25,7 +25,7 @@ const StoreItem= (props)=> {
                 <br />
                 <Card.Img variant="top" src={props.img} />
                 <br />
-                {props.id}
+                
                 <Card.Text>${props.price}</Card.Text>
                 
                 <Button variant="primary" onClick={submitHandler}>Add to Cart</Button>
